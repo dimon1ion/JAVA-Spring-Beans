@@ -80,6 +80,19 @@ public class Car {
         return totalsum;
     }
 
+    public double getTotalWeight(){
+        double totalWeight = 0;
+        if (engine != null)
+            totalWeight += engine.getWeight();
+        if (transmission != null)
+            totalWeight += transmission.getWeight();
+        if (!wheels.isEmpty())
+            totalWeight += wheels.stream().mapToDouble(Wheel::getWeight).sum();
+        if (body != null)
+            totalWeight += body.getWeight();
+        return totalWeight;
+    }
+
     @Override
     public String toString() {
         StringBuilder carInfo = new StringBuilder();
@@ -87,13 +100,16 @@ public class Car {
                 "\nBrand: " + brand +
                 "\nName: " + name +
                 "\nBody: " + body.getType().name() +
-                "\nTransmission: " + transmission.getType().name() +
+                "\nTransmission: " +
+                "\n\tType:" + transmission.getType().name() +
+                "\n\tNumber of gears: " + transmission.getNumberOfGears() +
                 "\nEngine: " +
                 "\n\thorse power:" + engine.getHorsepower() +
                 "\n\tvolume:" + engine.getVolume() +
                 "\nWheels:" );
         wheels.forEach(wheel -> carInfo.append("\n\tdiameter:" + wheel.getDiameter()));
-        carInfo.append("\nPrice: " + getTotalPrice() + "\n");
+        carInfo.append("\nPrice: " + getTotalPrice());
+        carInfo.append("\nWeight: " + getTotalWeight() + "\n");
         return carInfo.toString();
     }
 }
