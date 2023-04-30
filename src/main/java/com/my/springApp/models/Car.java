@@ -67,6 +67,19 @@ public class Car {
         this.body = body;
     }
 
+    public double getTotalPrice(){
+        double totalsum = margin;
+        if (engine != null)
+            totalsum += engine.getPrice();
+        if (transmission != null)
+            totalsum += transmission.getPrice();
+        if (!wheels.isEmpty())
+            totalsum += wheels.stream().mapToDouble(Wheel::getPrice).sum();
+        if (body != null)
+            totalsum += body.getPrice();
+        return totalsum;
+    }
+
     @Override
     public String toString() {
         StringBuilder carInfo = new StringBuilder();
@@ -80,7 +93,7 @@ public class Car {
                 "\n\tvolume:" + engine.getVolume() +
                 "\nWheels:" );
         wheels.forEach(wheel -> carInfo.append("\n\tdiameter:" + wheel.getDiameter()));
-        carInfo.append("\n");
+        carInfo.append("\nPrice: " + getTotalPrice() + "\n");
         return carInfo.toString();
     }
 }
