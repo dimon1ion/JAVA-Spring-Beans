@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="engineFerrari"
+          class="com.my.springApp.models.Engine"
+          scope="prototype">
+        <property name="horsepower" value="1200"/>
+        <property name="volume" value="100"/>
+        <property name="weight" value="2354"/>
+        <property name="price" value="2356.1"/>
+    </bean>
+
+    <bean id="engineBmw"
+          class="com.my.springApp.models.Engine"
+          scope="prototype">
+        <property name="horsepower" value="700"/>
+        <property name="volume" value="100"/>
+        <property name="weight" value="3214"/>
+        <property name="price" value="1234.1"/>
+    </bean>
+
+    <bean id="manual8Transmission"
+          class="com.my.springApp.models.Transmission"
+          scope="prototype">
+        <property name="type" value="Manual"/>
+        <property name="numberOfGears" value="8"/>
+        <property name="price" value="400"/>
+        <property name="weight" value="30.56"/>
+    </bean>
+
+    <bean id="automatic6Transmission"
+          class="com.my.springApp.models.Transmission"
+          scope="prototype">
+        <property name="type" value="Automatic"/>
+        <property name="numberOfGears" value="6"/>
+        <property name="price" value="430"/>
+        <property name="weight" value="42.10"/>
+    </bean>
+
+    <bean id="wheel18"
+          class="com.my.springApp.models.Wheel"
+          scope="prototype">
+        <property name="diameter" value="18"/>
+        <property name="weight" value="50"/>
+        <property name="price" value="60"/>
+    </bean>
+
+    <bean id="wheel16"
+          class="com.my.springApp.models.Wheel"
+          scope="prototype">
+        <property name="diameter" value="16"/>
+        <property name="weight" value="46"/>
+        <property name="price" value="54"/>
+    </bean>
+
+    <bean id="sedanBodyFerrari"
+          class="com.my.springApp.models.Body"
+          scope="prototype">
+        <property name="type" value="Sedan"/>
+        <property name="weight" value="243"/>
+        <property name="price" value="798"/>
+    </bean>
+
+    <bean id="coupeBodyBmwX5M"
+          class="com.my.springApp.models.Body"
+          scope="prototype">
+        <property name="type" value="Coupe"/>
+        <property name="weight" value="481"/>
+        <property name="price" value="574"/>
+    </bean>
+
+    <bean id="carFerrariF2-23"
+          class="com.my.springApp.models.Car"
+          scope="prototype">
+        <property name="brand" value="Ferrari"/>
+        <property name="name" value="F2-23"/>
+        <property name="margin" value="430"/>
+        <property name="engine" ref="engineFerrari"/>
+        <property name="transmission" ref="manual8Transmission"/>
+        <property name="wheels">
+            <list>
+                <ref bean="wheel16"/>
+                <ref bean="wheel16"/>
+                <ref bean="wheel16"/>
+                <ref bean="wheel16"/>
+            </list>
+        </property>
+        <property name="body" ref="sedanBodyFerrari"/>
+    </bean>
+    <bean id="carFerrari-luxury"
+          class="com.my.springApp.models.Car"
+          scope="prototype">
+        <property name="brand" value="Ferrari"/>
+        <property name="name" value="LuxuryV"/>
+        <property name="margin" value="430"/>
+        <property name="engine" ref="engineFerrari"/>
+        <property name="transmission" ref="automatic6Transmission"/>
+        <property name="wheels">
+            <list>
+                <ref bean="wheel16"/>
+                <ref bean="wheel16"/>
+                <ref bean="wheel16"/>
+                <ref bean="wheel16"/>
+            </list>
+        </property>
+        <property name="body" ref="coupeBodyBmwX5M"/>
+    </bean>
+    <bean id="carBmwX5M-23"
+          class="com.my.springApp.models.Car"
+          scope="prototype">
+        <property name="brand" value="Bmw"/>
+        <property name="name" value="X5M-23"/>
+        <property name="margin" value="210"/>
+        <property name="engine" ref="engineBmw"/>
+        <property name="transmission" ref="automatic6Transmission"/>
+        <property name="wheels">
+            <list>
+                <ref bean="wheel18"/>
+                <ref bean="wheel18"/>
+                <ref bean="wheel18"/>
+                <ref bean="wheel18"/>
+            </list>
+        </property>
+        <property name="body" ref="coupeBodyBmwX5M"/>
+    </bean>
+    <bean id="carBmw-PressF"
+          class="com.my.springApp.models.Car"
+          scope="prototype">
+        <property name="brand" value="Bmw"/>
+        <property name="name" value="PressF"/>
+        <property name="margin" value="210"/>
+        <property name="engine" ref="engineFerrari"/>
+        <property name="transmission" ref="manual8Transmission"/>
+        <property name="wheels">
+            <list>
+                <ref bean="wheel18"/>
+                <ref bean="wheel18"/>
+                <ref bean="wheel16"/>
+                <ref bean="wheel16"/>
+            </list>
+        </property>
+        <property name="body" ref="coupeBodyBmwX5M"/>
+    </bean>
+</beans>

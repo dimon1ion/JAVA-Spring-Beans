@@ -1,4 +1,4 @@
-package com.my.springapp.models;
+package com.my.springApp.models.enums;
 
 public enum TransmissionType {
     Manual,

@@ -1,2 +1,5 @@
-package com.my.springapp.models.enums;public enum BodyType {
+package com.my.springApp.models.enums;
+
+public enum BodyType {
+    Sedan, StationWagon, Coupe
 }
